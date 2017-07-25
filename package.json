@@ -1,0 +1,48 @@
+{
+  "name": "pmdc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nf start -j Procfile-dev",
+    "prod": "nf start",
+    "db:migration:create": "nf run sequelize migration:create",
+    "db:migrate": "nf run sequelize db:migrate",
+    "db:migrate:undo": "nf run sequelize db:migrate:undo",
+    "db:migrate:undo:all": "nf run sequelize db:migrate:undo:all",
+    "db:seed:create": "nf run sequelize seed:create",
+    "db:seed:all": "nf run sequelize db:seed:all",
+    "db:seed:undo": "nf run sequelize db:seed:undo -- --seed",
+    "db:seed:undo:all": "nf run sequelize db:seed:undo:all"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/derniercri/pmdc.git"
+  },
+  "author": "DernierCri <bonjour@derniercri.io>",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/derniercri/pmdc/issues"
+  },
+  "homepage": "https://github.com/derniercri/pmdc#readme",
+  "engines": {
+    "node": "8.2.1",
+    "npm": "5.3.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.3",
+    "foreman": "^2.0.0",
+    "ioredis": "^3.1.1",
+    "node-mailjet": "^3.1.0",
+    "pg": "^7.0.2",
+    "pug": "^2.0.0-rc.2",
+    "sequelize": "^4.4.2",
+    "sequelize-cli": "^2.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
