@@ -1,4 +1,4 @@
-module.exports = sequelize => ({
+module.exports = ({ UserModel }) => ({
   createUser: async (email, password) => {
     const options = {
       where: { email },
@@ -9,7 +9,7 @@ module.exports = sequelize => ({
       raw: true
     };
 
-    return await sequelize.findOrCreate(options);
+    return await UserModel.findOrCreate(options);
   },
   selectUserByEmail: async email => {
     const options = {
@@ -23,6 +23,6 @@ module.exports = sequelize => ({
       raw: true
     };
 
-    return await sequelize.findOne(options);
+    return await UserModel.findOne(options);
   }
 });

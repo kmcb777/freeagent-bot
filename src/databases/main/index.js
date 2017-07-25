@@ -9,5 +9,5 @@ const models = {
 };
 
 module.exports = Object.assign(
-  UsersRequests(models.UserModel)
+  UsersRequests(models)
 );
