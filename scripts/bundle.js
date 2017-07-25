@@ -24,14 +24,15 @@ export const browserConfig = {
   },
   entry: {
     app: [
-      /*'babel-polyfill',
-      `webpack-dev-server/client?http://localhost:${BROWSER_PORT}`,
+      'babel-polyfill',
+      'react-hot-loader/patch',
+      /*`webpack-dev-server/client?http://localhost:${BROWSER_PORT}`,
       'webpack/hot/only-dev-server',*/
-      path.join(__dirname, '../src/app/main.js')
+      path.resolve(__dirname, '../src/app/main.js')
     ]
   },
   output: {
-    path: path.join(__dirname, '../src/build/assets'),
+    path: path.resolve(__dirname, '../src/build/assets'),
     filename: '[name].js'
   },
   watch: true,
@@ -45,18 +46,19 @@ export const browserConfig = {
       }*/
       {
         test: /\.js$/,
-        exclude: [
+        /*exclude: [
           path.resolve(__dirname, 'node_modules'),
-        ],
+        ],*/
         use: [
-          'react-hot-loader',
           'babel-loader'
         ]
       }
     ]
   },
   plugins: [
-    /*
+    new webpack.ProvidePlugin({
+      "React": "react",
+    }),
     new webpack.ProgressPlugin((percentage, message) => {
       const MOVE = new Buffer('1b5b3130303044', 'hex').toString()
       const CLEAR = new Buffer('1b5b304b', 'hex').toString()
@@ -69,6 +71,8 @@ export const browserConfig = {
 
       process.stdout.write(loading)
     }),
+    new webpack.HotModuleReplacementPlugin(),
+    /*
     new webpack.NoErrorsPlugin(),
     ...(() => {
       let plugins = []
@@ -101,6 +105,30 @@ export const browserConfig = {
   devtool: 'sourcemap'
 }
 
-webpack(browserConfig).run(() => {
-  console.log('hey')
-});
+let bundler = webpack(browserConfig)/*.watch({
+  aggregateTimeout: 300,
+  poll: 1000
+}, (err, stats) => {
+  console.log('hey', err)
+});*/
+
+let server = new WebpackDevServer(bundler, {
+  publicPath: '/assets/',
+  hot: true,
+  historyApiFallback: true,
+  compress: true
+})
+
+server.listen(BROWSER_PORT, '0.0.0.0', (err) => {
+  const CLEAR = new Buffer('1b5b304b', 'hex').toString()
+
+  process.stdout.write(CLEAR)
+
+  if (err) {
+    console.error(err)
+    console.error('browser development server error')
+  } else {
+    console.log(`browser server running on port ${BROWSER_PORT}`)
+    console.info('waiting for browser bundle...')
+  }
+})
