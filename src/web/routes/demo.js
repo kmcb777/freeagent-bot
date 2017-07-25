@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
   const value = 'test';
-  let demo = await demoHandler(value);
+  let { value: demo } = await demoHandler(value);
 
   return res.render('demo.pug', { demo });
 });
