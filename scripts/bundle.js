@@ -116,7 +116,20 @@ let server = new WebpackDevServer(bundler, {
   publicPath: '/assets/',
   hot: true,
   historyApiFallback: true,
-  compress: true
+  compress: true,
+  proxy: {
+    '/': {
+      target: `http://localhost:${SERVER_PORT}/`
+    },
+    '/rest/*': {
+      target: `http://localhost:${SERVER_PORT}/`
+    }
+  },
+  watchContentBase: true,
+  watchOptions: {
+    aggregateTimeout: 300,
+    poll: 1000
+  }
 })
 
 server.listen(BROWSER_PORT, '0.0.0.0', (err) => {
