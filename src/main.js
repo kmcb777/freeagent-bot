@@ -1,6 +1,3 @@
-// loading env variables from .env
-require('dotenv').config()
-
 const express = require('express');
 const web = require('./web');
 const rest = require('./rest');
