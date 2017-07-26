@@ -1,36 +1,26 @@
+'use strict';
+
 module.exports = {
-  async up({ sequelize }) {
-    const query = `
-      CREATE TABLE users (
-        id serial
-        PRIMARY KEY,
-        email character varying(254)
-        UNIQUE
-        NOT NULL,
-        password character(60),
-        name character varying(64),
-        confirmed boolean
-        DEFAULT false
-        NOT NULL,
-        active boolean
-        DEFAULT false
-        NOT NULL,
-        created_at timestamp
-        DEFAULT now()
-        NOT NULL,
-        deleted_at timestamp
-      );
-    `;
-
-    await sequelize.query(query);
+  up: function (queryInterface, DataTypes) {
+    queryInterface.createTable(
+      'users',
+      {
+        id: {
+          type: DataTypes.INTEGER,
+          primaryKey: true,
+          autoIncrement: true
+        },
+        created_at: DataTypes.DATE,
+        updated_at: DataTypes.DATE,
+        email: DataTypes.STRING,
+        password: DataTypes.STRING
+      },
+      {
+        charset: 'utf8' // default: null
+      }
+    );
   },
-  async down({ sequelize }) {
-    if (process.env.NODE_ENV === 'production') {
-      return;
-    }
-
-    const query = 'DROP TABLE users;';
-
-    await sequelize.query(query);
+  down: function (queryInterface, DataTypes) {
+    queryInterface.dropTable('users');
   }
 };
