@@ -5,9 +5,9 @@
   "main": "src/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "nf run babel-node scripts/bundle.js -j Procfile-dev",
-    "dev": "nf start -j Procfile-dev",
-    "prod": "nf start",
+    "dev-server": "nf start -j Procfile-dev",
+    "dev-front": "webpack-dev-server --hot --open --env .env",
+    "dev": "npm run dev-server | npm run dev-front",
     "db:migration:create": "nf run sequelize migration:create",
     "db:migrate": "nf run sequelize db:migrate",
     "db:migrate:undo": "nf run sequelize db:migrate:undo",
