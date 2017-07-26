@@ -1,7 +1,8 @@
 const webpack = require('webpack')
 const path = require('path')
 
-const server_port = process.env.SERVER_PORT || 3000;
+const serverPort = process.env.PORT || 3000;
+const devPort = process.env.DEV_PORT || 3001;
 
 module.exports = {
   devtool: 'source-map',
@@ -27,15 +28,15 @@ module.exports = {
     }),
   ],
   devServer: {
-    port: 3001,
+    port: devPort,
     historyApiFallback: true,
     publicPath: '/assets/',
     proxy: {
       '/': {
-        target: `http://localhost:${server_port}/`
+        target: `http://localhost:${serverPort}/`
       },
       '/rest/*': {
-        target: `http://localhost:${server_port}/`
+        target: `http://localhost:${serverPort}/`
       }
     }
   }

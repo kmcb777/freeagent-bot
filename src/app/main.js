@@ -40,8 +40,5 @@ if (appDomEl) {
 }
 
 if (module.hot) {
-  console.log('hot')
   module.hot.accept('./app', () => appRender(App));
-} else {
-  console.log('yep')
 }
