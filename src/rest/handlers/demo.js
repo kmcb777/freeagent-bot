@@ -20,6 +20,11 @@ async function demoHandler(value) {
   return result;
 };
 
+async function basicDemoHandler() {
+  return 'test succeeded'
+}
+
 module.exports = {
-  demoHandler
+  demoHandler,
+  basicDemoHandler
 };
