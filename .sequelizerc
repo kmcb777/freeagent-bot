@@ -8,7 +8,12 @@ module.exports = {
     'config',
     'database.js'
   ),
-  'models-path': null, // TODO
+  'models-path': path.resolve(
+    'src',
+    'databases',
+    'main',
+    'models'
+  ),
   'migrations-path': path.resolve(
     'src',
     'databases',
