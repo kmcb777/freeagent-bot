@@ -1,1 +1,1 @@
-web: nodemon src/main.js
+web: nodemon src/main.js --config nodemon.json --ignore src/app/* --ignore src/build/*
