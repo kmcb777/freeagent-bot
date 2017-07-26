@@ -54,7 +54,10 @@
     "ioredis": "^3.1.1",
     "node-mailjet": "^3.1.0",
     "pug": "^2.0.0-rc.2",
+<<<<<<< HEAD
     "raven": "^2.1.0",
+=======
+>>>>>>> dae87647e476d24ceecf0a0f4c51ea3459b54a8a
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-hot-loader": "^3.0.0-beta.7",
