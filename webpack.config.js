@@ -22,10 +22,12 @@ module.exports = {
   plugins: [
     new webpack.ProvidePlugin({
       "React": "react",
-    })
-  ],/*
+    }),
+  ],
   devServer: {
     port: 3001,
+    noInfo: true,
+    quiet: true,
     historyApiFallback: true,
     publicPath: '/assets/',
     proxy: {
@@ -36,5 +38,5 @@ module.exports = {
         target: `http://localhost:3000/`
       }
     }
-  }*/
+  }
 }

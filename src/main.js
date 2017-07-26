@@ -4,12 +4,9 @@ const rest = require('./rest');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const path = require('path');
-const webpack = require('webpack');
-const config = require('../webpack.config');
 
 const server = express();
 const port = process.env.SERVER_PORT || 3000;
-const compiler = webpack(config);
 
 server.use(cookieParser());
 server.use(bodyParser.urlencoded({ extended: false }));
