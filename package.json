@@ -4,14 +4,13 @@
   "description": "",
   "main": "src/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "nf run babel-node scripts/bundle.js -j Procfile-dev",
-    "prod": "nf start",
     "lint": "eslint src",
     "test": "jest --config ./jest-config.json",
     "dev-server": "nf start -j Procfile-dev",
     "dev-front": "webpack-dev-server --hot --open --env .env",
     "dev": "npm run dev-server | npm run dev-front",
+    "prod": "nf start",
     "db:migration:create": "nf run sequelize migration:create",
     "db:migrate": "nf run sequelize db:migrate",
     "db:migrate:undo": "nf run sequelize db:migrate:undo",
@@ -55,13 +54,20 @@
     "node-mailjet": "^3.1.0",
     "pug": "^2.0.0-rc.2",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "raven": "^2.1.0",
 =======
 >>>>>>> dae87647e476d24ceecf0a0f4c51ea3459b54a8a
+=======
+>>>>>>> 1d9216583bf680668d99d265e34a837231ecf6cb
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-hot-loader": "^3.0.0-beta.7",
     "react-router": "^4.1.2",
+<<<<<<< HEAD
+=======
+    "raven": "^2.1.0",
+>>>>>>> 1d9216583bf680668d99d265e34a837231ecf6cb
     "sequelize": "^4.4.2",
     "sequelize-cli": "^2.7.0",
     "webpack": "^3.4.0",
