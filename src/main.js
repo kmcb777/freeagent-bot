@@ -7,6 +7,7 @@ const path = require('path');
 
 const server = express();
 const port = process.env.PORT || 3000;
+const assetsPath = path.resolve(__dirname, './build/app/assets');
 
 server.use(cookieParser());
 server.use(bodyParser.urlencoded({ extended: false }));
@@ -17,19 +18,15 @@ if (process.env.RAVEN_SENTRY_DSN) {
   server.use(raven.middleware.express.requestHandler(process.env.RAVEN_SENTRY_DSN));
 }
 
-// if (process.env.NODE_ENV !== 'production') {
-//   /*server.use(require('webpack-dev-middleware')(compiler, {
-//     publicPath: '/assets/'
-//   }));*/
-//
-//   server.use(require('webpack-hot-middleware')(compiler));
-// }
-
-server.set('views', path.join(__dirname, '/web/views'));
+server.set('views', path.resolve(__dirname, './web/views'));
 server.set('view engine', 'pug');
 
 server.use(web);
 server.use('/api', rest);
+
+if (process.env.NODE_ENV === 'production') {
+  server.use('/assets', express.static(assetsPath));
+}
 
 server.listen(port, () => {
   console.log(`server running on ${port}`);

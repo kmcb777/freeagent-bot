@@ -1,6 +1,8 @@
 html
   head
     title='Test'
+    if process.env.NODE_ENV === 'production'
+      link(rel='stylesheet' type='text/css' href='/assets/app.css')
   body
     div(class='content')
       h1
