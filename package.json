@@ -10,6 +10,7 @@
     "dev-server": "nf start -j Procfile-dev",
     "dev-front": "nf run webpack-dev-server -- --hot --open",
     "dev": "concurrently \"npm run dev-server\" \"npm run dev-front\"",
+    "test": "nf run NODE_ENV=test sequelize db:migrate:undo:all && nf run NODE_ENV=test sequelize db:migrate && nf run NODE_ENV=test sequelize db:seed:all && nf run NODE_ENV=test jest -- --config ./jest-config.json",
     "db:migration:create": "nf run sequelize migration:create",
     "db:migrate": "nf run sequelize db:migrate",
     "db:migrate:undo": "nf run sequelize db:migrate:undo",
@@ -78,6 +79,8 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "jest": "^18.0.0",
-    "nodemon": "^1.11.0"
+    "regenerator-runtime": "^0.10.5",
+    "nodemon": "^1.11.0",
+    "webpack": "^3.0.0"
   }
 }
