@@ -14,7 +14,7 @@ function isValidEmail(email) {
     return false;
   }
 
-  emailParts = email.split('@');
+  const emailParts = email.split('@');
 
   if (emailParts.length > 2) {
     return false;
