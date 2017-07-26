@@ -12,6 +12,11 @@ server.use(cookieParser());
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(bodyParser.json());
 
+// Use sentry if DSN is defined
+if (process.env.RAVEN_SENTRY_DSN) {
+  server.use(raven.middleware.express.requestHandler(process.env.RAVEN_SENTRY_DSN));
+}
+
 server.set('views', path.join(__dirname, '/web/views'));
 server.set('view engine', 'pug');
 

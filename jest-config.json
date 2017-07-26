@@ -1,0 +1,5 @@
+{
+  "verbose": true,
+  "testPathIgnorePatterns":["__snapshots__"],
+  "testRegex": ".*-test.js"
+}
