@@ -4,7 +4,6 @@
   "description": "",
   "main": "src/main.js",
   "scripts": {
-    "build": "nf run babel-node scripts/bundle.js -j Procfile-dev",
     "lint": "eslint src",
     "dev-server": "nf start -j Procfile-dev",
     "dev-front": "nf run webpack-dev-server -- --hot --open",
