@@ -1,0 +1,4 @@
+export const SET_TEST_TEXT = 'SET_TEST_TEXT'
+export const RESET_TEST_TEXT = 'RESET_TEST_TEXT'
+
+export const RECEIVE_DEMO = 'RECEIVE_DEMO'

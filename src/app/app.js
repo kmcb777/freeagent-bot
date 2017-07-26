@@ -10,19 +10,19 @@ class App extends Component {
 
   componentWillMount() {
     const { dispatch } = this.props
-    dispatch(loadDemo())
+    loadDemo(dispatch)
   }
 
   renderMenuBar() {
-    const { menuItems } = this.props
+    const { demo } = this.props
 
-    if (!menuItems || !menuItems.length) return null
+    if (!demo) return null
 
-    return menuItems.map(item => (
-      <div className="menu-item">
-        item.label
+    return (
+      <div>
+        Démo résult: { demo }
       </div>
-    ))
+    )
   }
 
   render() {
@@ -43,12 +43,11 @@ class App extends Component {
 
 
 const mapStateToProps = state => ({
-  menuItems: state.demo.demo
+  demo: state.demo.demo
 })
 
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-
   dispatch
 })
 

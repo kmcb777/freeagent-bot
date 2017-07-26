@@ -17,13 +17,13 @@ if (process.env.RAVEN_SENTRY_DSN) {
   server.use(raven.middleware.express.requestHandler(process.env.RAVEN_SENTRY_DSN));
 }
 
-if (process.env.NODE_ENV !== 'production') {
-  /*server.use(require('webpack-dev-middleware')(compiler, {
-    publicPath: '/assets/'
-  }));*/
-
-  server.use(require('webpack-hot-middleware')(compiler));
-}
+// if (process.env.NODE_ENV !== 'production') {
+//   /*server.use(require('webpack-dev-middleware')(compiler, {
+//     publicPath: '/assets/'
+//   }));*/
+//
+//   server.use(require('webpack-hot-middleware')(compiler));
+// }
 
 server.set('views', path.join(__dirname, '/web/views'));
 server.set('view engine', 'pug');
