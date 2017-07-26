@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 
 const server = express();
-const port = process.env.SERVER_PORT || 3000;
+const port = process.env.PORT || 3000;
 
 server.use(cookieParser());
 server.use(bodyParser.urlencoded({ extended: false }));
