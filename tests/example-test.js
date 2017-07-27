@@ -4,9 +4,9 @@ const validEmail = 'cedric@derniercri.io'
 const invalidEmail = 'fabien.derniercri.io'
 
 test('isValidEmail', () => {
-  expect(isValidEmail(validEmail)).toBe(true);
+  expect(isValidEmail(validEmail)).toBe(true)
 })
 
 test('isValidEmail', () => {
-  expect(isValidEmail(invalidEmail)).toBe(false);
+  expect(isValidEmail(invalidEmail)).toBe(false)
 })

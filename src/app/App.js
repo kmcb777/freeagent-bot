@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
-import { loadDemo } from './action-creators/DemoActionCreators'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+
+import { loadDemo } from './action-creators/DemoActionCreators'
 
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   componentWillMount() {
     const { dispatch } = this.props
     loadDemo(dispatch)
@@ -33,21 +31,25 @@ class App extends Component {
             { this.renderMenuBar() }
           </div>
         </div>
-        <h1>Hello there</h1>
+        <p>Hello there</p>
         { this.props.child }
       </div>
-    );
+    )
   }
 }
 
-
+App.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  child: PropTypes.object.isRequired,
+  demo: PropTypes.object.isRequired
+}
 
 const mapStateToProps = state => ({
   demo: state.demo.demo
 })
 
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = dispatch => ({
   dispatch
 })
 

@@ -1,5 +1,6 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 import {
   setTestText,
@@ -7,32 +8,34 @@ import {
 } from '../actions/ui'
 
 class Test extends Component {
-
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     const { text } = this.props
 
     return (
       <div>
-        <button onClick={ this.props.setText }>Set</button>
-        <button onClick={ this.props.resetText }>Reset</button>
+        <button onClick={this.props.setText}>Set</button>
+        <button onClick={this.props.resetTex}>Reset</button>
         { text }
       </div>
     )
   }
 }
 
+Test.propTypes = {
+  text: PropTypes.string.isRequired,
+  setText: PropTypes.func.isRequired,
+  resetTex: PropTypes.func.isRequired
+}
+
+
 const mapStateToProps = state => ({
   text: state.ui.text
 })
 
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  setText: _ => dispatch(setTestText('Test')),
-  resetText: _ => dispatch(resetTestText()),
+const mapDispatchToProps = dispatch => ({
+  setText: () => dispatch(setTestText('Test')),
+  resetText: () => dispatch(resetTestText()),
   dispatch
 })
 

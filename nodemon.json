@@ -1,6 +1,5 @@
 {
     "ignore": [
-      "src/app/*.js",
-      "src/build/*.js"
+      "src/app/*.js"
     ]
 }

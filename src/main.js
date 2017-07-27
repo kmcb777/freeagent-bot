@@ -1,33 +1,44 @@
-const express = require('express');
-const web = require('./web');
-const rest = require('./rest');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
-const path = require('path');
+import express from 'express'
+import cookieParser from 'cookie-parser'
+import bodyParser from 'body-parser'
+import path from 'path'
+import winston from 'winston'
+import Raven from 'raven'
 
-const server = express();
-const port = process.env.PORT || 3000;
-const assetsPath = path.resolve(__dirname, './build/app/assets');
+import web from './web'
+import rest from './rest'
 
-server.use(cookieParser());
-server.use(bodyParser.urlencoded({ extended: false }));
-server.use(bodyParser.json());
+// Creates the logger
+const logger = new (winston.Logger)({
+  transports: [
+    new (winston.transports.Console)({ timestamp: true, colorize: true })
+  ]
+})
+
+const server = express()
+const port = process.env.PORT || 3000
+const assetsPath = path.resolve(__dirname, '/assets')
+
+server.use(cookieParser())
+server.use(bodyParser.urlencoded({ extended: false }))
+server.use(bodyParser.json())
 
 // Use sentry if DSN is defined
 if (process.env.RAVEN_SENTRY_DSN) {
-  server.use(raven.middleware.express.requestHandler(process.env.RAVEN_SENTRY_DSN));
+  Raven.config(process.env.RAVEN_SENTRY_DSN).install()
+  server.use(Raven.requestHandler())
 }
 
-server.set('views', path.resolve(__dirname, './web/views'));
-server.set('view engine', 'pug');
+server.set('views', path.resolve(__dirname, './../src/web/views'))
+server.set('view engine', 'pug')
 
-server.use(web);
-server.use('/api', rest);
+server.use(web)
+server.use('/api', rest)
 
 if (process.env.NODE_ENV === 'production') {
-  server.use('/assets', express.static(assetsPath));
+  server.use('/assets', express.static(assetsPath))
 }
 
 server.listen(port, () => {
-  console.log(`server running on ${port}`);
-});
+  logger.info(`server running on ${port}`)
+})

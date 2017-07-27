@@ -2,7 +2,7 @@ const initialState = {
   text: null
 }
 
-const ui  = (state = initialState, action) => {
+const ui = (state = initialState, action) => {
   switch (action.type) {
     case 'SET_TEST_TEXT':
       return {

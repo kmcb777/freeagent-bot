@@ -1,15 +1,31 @@
 # create-react-node-app
 
-## Tools
+[![Build Status](https://travis-ci.com/derniercri/create-react-node-app.svg?token=qdTQf4UgF3yAGT8BzkKv&branch=master)](https://travis-ci.com/derniercri/create-react-node-app)
 
-Install https://github.com/creationix/nvm
+__What is included ?__
 
-## Install
+- Express
+- React/redux
+- Webpack
+- CI script
+- Docker database
+- Hot reload with Foreman/Webpack
+- Flow (optional)
 
-```npm install```
+## Getting started
 
-```npm run db:migrate```
+You can use docker to easily start databases
 
-## Development
+```
+docker-compose up -d
+```
 
-```npm run dev```
+Once the databases are started, run the migration script
+
+```
+cp .env.example .env
+npm install
+npm run db:migrate
+npm run dev
+
+```

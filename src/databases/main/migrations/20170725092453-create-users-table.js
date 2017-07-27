@@ -1,7 +1,5 @@
-'use strict';
-
 module.exports = {
-  up: function (queryInterface, DataTypes) {
+  up: (queryInterface, DataTypes) => {
     queryInterface.createTable(
       'users',
       {
@@ -18,9 +16,9 @@ module.exports = {
       {
         charset: 'utf8' // default: null
       }
-    );
+    )
   },
-  down: function (queryInterface, DataTypes) {
-    queryInterface.dropTable('users');
+  down: queryInterface => {
+    queryInterface.dropTable('users')
   }
-};
+}

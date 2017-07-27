@@ -1,4 +1,4 @@
-module.exports = ({ UserModel }) => ({
+export default ({ UserModel }) => ({
   createUser: async (email, password) => {
     const options = {
       where: { email },
@@ -7,9 +7,9 @@ module.exports = ({ UserModel }) => ({
         password
       },
       raw: true
-    };
+    }
 
-    return await UserModel.findOrCreate(options);
+    return UserModel.findOrCreate(options)
   },
   selectUserByEmail: async email => {
     const options = {
@@ -21,8 +21,8 @@ module.exports = ({ UserModel }) => ({
         'active'
       ],
       raw: true
-    };
+    }
 
-    return await UserModel.findOne(options);
+    return UserModel.findOne(options)
   }
-});
+})

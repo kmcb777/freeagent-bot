@@ -1,25 +1,19 @@
-const { setDemoOne, getDemoOne } = require('../../databases/redis');
+const { setDemoOne, getDemoOne } = require('../../databases/redis')
 
-async function demoHandler(value) {
-  let result = {
+export default async function demoHandler(value) {
+  const result = {
     value: null,
     error: null
-  };
-
-  try {
-    await setDemoOne(value);
-    result.value = await getDemoOne();
-  } catch (error) {
-    console.error(error);
-
-    result.error = 'An unknow error happened, try refreshing the page';
-
-    return result;
   }
 
-  return result;
-};
+  try {
+    await setDemoOne(value)
+    result.value = await getDemoOne()
+  } catch (error) {
+    result.error = 'An unknow error happened, try refreshing the page'
 
-module.exports = {
-  demoHandler
-};
+    return result
+  }
+
+  return result
+}
