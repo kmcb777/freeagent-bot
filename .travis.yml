@@ -1,0 +1,17 @@
+language: node_js
+sudo: required
+node_js:
+  - "8"
+services:
+  - postgresql
+env:
+  - MAIN_TEST_DATABASE_URL=postgres://postgres@localhost:5432/database_test
+
+before_script:
+  - psql -c 'create database database_test;' -U postgres
+
+script:
+  - npm run test
+  - npm run flow:types:install
+  - npm run flow
+  - npm run lint

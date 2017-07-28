@@ -1,10 +1,11 @@
-const Redis = require('ioredis');
-const DemoOneRequests = require('./requests/demo-one');
-const DemoTwoRequests = require('./requests/demo-two');
+import Redis from 'ioredis'
 
-const redis = new Redis(process.env.AUTHENTICATION_DATABASE_URL);
+const DemoOneRequests = require('./requests/demo-one')
+const DemoTwoRequests = require('./requests/demo-two')
 
-module.exports = Object.assign(
+const redis = new Redis(process.env.AUTHENTICATION_DATABASE_URL)
+
+export default Object.assign(
   DemoOneRequests(redis),
   DemoTwoRequests(redis)
-);
+)

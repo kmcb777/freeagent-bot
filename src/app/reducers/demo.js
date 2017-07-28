@@ -2,7 +2,7 @@ const initialState = {
   demo: []
 }
 
-const demo  = (state = initialState, action) => {
+const demo = (state = initialState, action) => {
   switch (action.type) {
     case 'RECEIVE_DEMO':
       return {

@@ -3,11 +3,11 @@ import {
   RESET_TEST_TEXT
 } from './index'
 
-export const setTestText = (text) => ({
+export const setTestText = text => ({
   type: SET_TEST_TEXT,
   text
 })
 
-export const resetTestText = _ => ({
+export const resetTestText = () => ({
   type: RESET_TEST_TEXT
 })

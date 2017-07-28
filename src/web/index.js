@@ -1,11 +1,10 @@
-const express = require('express');
-const home = require('./routes/home');
-const demo = require('./routes/demo');
-const path = require('path');
+import express from 'express'
+import home from './routes/home'
+import demo from './routes/demo'
 
-const router = express.Router();
+const router = express.Router()
 
-router.use('/', home);
-router.use('/demo', demo);
+router.use('/', home)
+router.use('/demo', demo)
 
-module.exports = router;
+module.exports = router

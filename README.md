@@ -1,15 +1,36 @@
 # create-react-node-app
 
-## Tools
+[![Build Status](https://travis-ci.com/derniercri/create-react-node-app.svg?token=qdTQf4UgF3yAGT8BzkKv&branch=master)](https://travis-ci.com/derniercri/create-react-node-app)
 
-Install https://github.com/creationix/nvm
+__Todo__
 
-## Install
+- Implement server side rendering: https://medium.com/front-end-hacking/server-side-rendering-with-react-and-express-382591bfc77c
+- Setup continuous delivery
 
-```npm install```
+__What is included ?__
 
-```npm run db:migrate```
+- Express
+- React/redux
+- Webpack
+- CI script
+- Docker database
+- Hot reload with Foreman/Webpack
+- Flow (optional)
 
-## Development
+## Getting started
 
-```npm run dev```
+You can use docker to easily start databases
+
+```
+docker-compose up -d
+```
+
+Once the databases are started, run the migration script
+
+```
+cp .env.example .env
+npm install
+npm run db:migrate
+npm run dev
+
+```

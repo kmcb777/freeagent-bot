@@ -1,8 +1,6 @@
 module.exports = redis => ({
-  setDemoOne: (value) => {
-    redis.set(`demo-one`, value);
+  setDemoOne: value => {
+    redis.set('demo-one', value)
   },
-  getDemoOne: async () => (
-    await redis.get(`demo-one`)
-  )
-});
+  getDemoOne: async () => redis.get('demo-one')
+})

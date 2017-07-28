@@ -1,7 +1,7 @@
-module.exports = mailjet => ({
+export default mailjet => ({
   sendDemoEmail: async email => {
-    const text = 'Test';
-    const html = '<p>Test</p>';
+    const text = 'Test'
+    const html = '<p>Test</p>'
 
     const dispatchOptions = {
       FromEmail: 'test@derniercri.io',
@@ -9,9 +9,9 @@ module.exports = mailjet => ({
       Subject: 'Test',
       'Text-part': text,
       'Html-part': html,
-      Recipients: [ { Email: email } ]
-    };
+      Recipients: [{ Email: email }]
+    }
 
-    await mailjet.post('send').request(dispatchOptions);
+    await mailjet.post('send').request(dispatchOptions)
   }
-});
+})

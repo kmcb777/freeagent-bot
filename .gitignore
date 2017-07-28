@@ -57,5 +57,8 @@ typings/
 # dotenv environment variables file
 .env
 
-# Project
-src/build/app/assets/*
+# built artifact
+dist/
+
+# flow files
+flow-typed/

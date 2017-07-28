@@ -1,13 +1,11 @@
-const express = require('express');
-const { demoHandler } = require('../handlers/demo');
+import express from 'express'
+import { demoHandler } from '../handlers/demo'
 
-const router = express.Router();
+const router = express.Router()
 
-router.get('/', async (req, res) => {
-  const value = 'test';
-  let { value: demo } = await demoHandler(value);
+export default router.get('/', async (req, res) => {
+  const value = 'test'
+  const { value: demo } = await demoHandler(value)
 
-  return res.render('demo.pug', { demo });
-});
-
-module.exports = router;
+  return res.render('demo.pug', { demo })
+})

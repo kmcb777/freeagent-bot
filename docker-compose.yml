@@ -1,0 +1,22 @@
+version: "3.2"
+services:
+  redis:
+    image: redis:4.0
+    ports:
+      - 6379:6379
+  postgres:
+    image: postgres:9.6
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=database
+  postgres-test:
+    image: postgres:9.6
+    ports:
+      - 15432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=database-test
