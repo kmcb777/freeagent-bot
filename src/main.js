@@ -17,7 +17,7 @@ const logger = new (winston.Logger)({
 
 const server = express()
 const port = process.env.PORT || 3000
-const assetsPath = path.resolve(__dirname, '/assets')
+const assetsPath = path.resolve(__dirname, './assets')
 
 server.use(cookieParser())
 server.use(bodyParser.urlencoded({ extended: false }))
@@ -34,10 +34,7 @@ server.set('view engine', 'pug')
 
 server.use(web)
 server.use('/api', rest)
-
-if (process.env.NODE_ENV === 'production') {
-  server.use('/assets', express.static(assetsPath))
-}
+server.use('/assets', express.static(assetsPath))
 
 server.listen(port, () => {
   logger.info(`server running on ${port}`)
