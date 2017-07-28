@@ -2,4 +2,7 @@ import express from 'express'
 
 const router = express.Router()
 
-export default router.get('/', (req, res) => res.render('home.pug'))
+router.get('/', (req, res) => res.render('home.pug'))
+router.get('/test', (req, res) => res.render('home.pug'))
+
+export default router
