@@ -1,10 +1,10 @@
 import express from 'express'
 import home from './routes/home'
-import demo from './routes/demo'
+import auth from './routes/auth'
 
 const router = express.Router()
 
 router.use('/', home)
-router.use('/demo', demo)
+router.use('/auth', auth)
 
 module.exports = router
