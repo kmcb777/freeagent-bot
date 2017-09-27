@@ -22,7 +22,8 @@
     "db:seed:undo": "nf run sequelize db:seed:undo -- --seed",
     "db:seed:undo:all": "nf run sequelize db:seed:undo:all",
     "flow": "flow",
-    "flow:types:install": "flow-typed install --overwrite"
+    "flow:types:install": "flow-typed install --overwrite",
+    "freeagent": "node ./scripts/test.js"
   },
   "repository": {
     "type": "git",
@@ -61,6 +62,7 @@
     "extract-text-webpack-plugin": "^3.0.0",
     "foreman": "^2.0.0",
     "ioredis": "^3.1.1",
+    "moment": "^2.18.1",
     "node-mailjet": "^3.1.0",
     "node-sass": "^4.5.3",
     "pg": "^7.0.2",
@@ -78,6 +80,7 @@
     "sequelize": "^4.4.2",
     "sequelize-cli": "^2.7.0",
     "superagent": "^3.5.2",
+    "superagent-promise": "^1.1.0",
     "style-loader": "^0.18.2",
     "webpack": "^3.4.0",
     "winston": "^2.3.1"
